@@ -6,7 +6,6 @@ import { catch404, handleError } from "./api/helpers/error"
 
 /* App Init */
 const app = express()
-const API_V = process.env.V || "1"
 
 /* Middleware */
 
@@ -18,7 +17,7 @@ app.use(bodyParse.urlencoded({ extended: true }))
 if (process.env.NODE_ENV === "dev") app.use(logger("dev"))
 
 //routes
-app.use(`/api/v${API_V}/`, indexRoute)
+app.use("/api", indexRoute)
 
 //catch 404 && handleError
 app.use(catch404, handleError)
